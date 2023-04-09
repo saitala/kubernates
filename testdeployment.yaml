@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testdeployment
+  labels:
+    app: firstkubernatestest
+spec:
+  selector:
+    matchLabels:
+      app: firstkubernatestest
+  replicas: 4
+  template:
+    metadata: 
+      labels:
+        app: firstkubernatestest
+    spec:
+      containers:
+        - name: mynginxcontanier
+          image: nginx
+          ports:
+            - name: firstport
+              containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: testservice
+  labels:
+    app: firstkubernatestest
+spec:
+  selector:
+    app: firstkubernatestest
+  type: LoadBalancer
+  ports:
+    - nodePort: 31000
+      port: 80
+      targetPort: 80
+  
+
