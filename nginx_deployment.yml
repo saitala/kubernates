@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: testdeployment
+  labels:
+    kube_id: a12b1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      kube_id: a12b1
+  template:
+    metadata:
+      labels:
+        kube_id: a12b1
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          ports:
+          - name: contport1
+            containerPort: 80
+
+
+
+
+
+
+
