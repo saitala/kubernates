@@ -1,0 +1,27 @@
+fir 1) loops: for (iterate over a sequence e.g,: list, tuple, string), while
+
+for i in range(5): --> range index starts from 0.  range(2, number) means 2 to that number.
+    print('something')
+
+counter = 0
+while counter < 5:
+    print('something')
+    count += 1
+
+
+ break, continue.
+
+ 2) Super example that python can go and iterate over a matrix:
+    matrix = [[1,2,3],[4,5,6],[7,8,9]]
+
+for row in matrix:  # we can say matrix is a list of lists
+    for element in row:
+        print(element)
+        print(element, end= ' ') # By default print will have a new line after a line. But if you want to add a space or custom behaviour you can use the end attibute.
+    print()
+
+ 3) Functions in geenral. But if those functions in clasess, then we call them as methods.
+     arguments vs parameters --> in the functin def name, it is paramteter. arguments are which we pass to function when we are calling them.
+
+
+
