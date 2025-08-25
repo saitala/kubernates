@@ -1,4 +1,4 @@
-fir 1) loops: for (iterate over a sequence e.g,: list, tuple, string), while
+fir 1) loops: for (iterate over a sequence e.g,: list, set, tuple, string), while
 
 for i in range(5): --> range index starts from 0.  range(2, number) means 2 to that number.
     print('something')
@@ -22,6 +22,47 @@ for row in matrix:  # we can say matrix is a list of lists
 
  3) Functions in geenral. But if those functions in clasess, then we call them as methods.
      arguments vs parameters --> in the functin def name, it is paramteter. arguments are which we pass to function when we are calling them.
+
+     default value in function example:
+
+      def mydata(data, second=2): # second is having the default value so we can say it is an optinal parameter. Also, you need to add first required parameters followed by the optional parameters
+        print("I am doing this"+data)
+      mydata("jo")
+ 4) Lists: Ordered, mutable collection of items. // Go throughh the list methods from python documentation.
+     Basic operations:
+        Accessing elements : list[index]
+        Slicing: list[start:end:step] # start is included, but end is excluded. Also check how negative index work in slicing.
+        modifying elements: list[index] = new_value
+        Adding elements: list.append(item)
+        Removing elements: list.remove(item) #This is the value, If you multipe 3's, then it will remove the first 3
+                           del list[index]
+
+        List Comprehensions:
+           if you have a list, to iterate, you can say:
+           for item in first_lsit:
+            print(item)
+
+            OR
+
+            for item in range(len(first)list)):
+                print(first_list[i]
+
+              OR i want to create a list, that will match a condition.
+
+              new_list = [x for x in second_list if x%2==0] # Go a bit in-depth of this one.
+
+
+      Important Example for substring:
+        haystack = "sadbutsad"
+        needle = "sad"
+        Now you want to find the first occurence of sad, and print the index of s.
+        for i in range(len(haystack)):
+            if(haystack[i:i+len(needle)] == needle:
+               print(i)
+               break
+
+
+
 
 
 
