@@ -61,6 +61,20 @@ for row in matrix:  # we can say matrix is a list of lists
                print(i)
                break
 
+ 5) Slicing of List (mutable) and String (immutable)
+     The format of the list slicing is [start:stop:step]
+     List Slicing example: (The same is applicable to String)
+        name = ["sinivassaitala", "ravi", "samu", "hasan", "kalpana"]
+        data = name[1:4:1]
+
+      Note: suppose we are printing a name backward, then we can give it as below:
+      data = name[len(name)-1::-1]   -> the middle :: says that don't stop anywhere and go upto the end one by one.
+
+  6) Tuples:
+     immutable, shimilar to list, but you use () brackets, instead of [] and they are ordered.
+     Example tuple: a = ("max", 1, 25, "xl")
+
+
 
 
 
