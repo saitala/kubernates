@@ -72,7 +72,127 @@ for row in matrix:  # we can say matrix is a list of lists
 
   6) Tuples:
      immutable, shimilar to list, but you use () brackets, instead of [] and they are ordered.
-     Example tuple: a = ("max", 1, 25, "xl")
+     Example:
+     my_tuple = (1, "str", 2)  #  For tuple, paranthesis () is optional
+      for i in range(len(my_tuple)):
+      print(my_tuple[i], end='')
+
+      Also for example if you keep only 1 element in the tuple, it will won't recognize it as a tuple, but it will consider it as a variable.
+      Example: my_tuple = (5) # When we give type of my_tuple, it will be an int. you need to keep a , after the value to indicate it as a tuple.
+
+      Tuple packing: Multiple values assigned to a single tuple variable.
+      a = (1,4,5)
+
+      Tuple unpacking: Values in a tuple assigned to multiple variables.
+      n,m,l = a
+
+      you can convert a list to a tuple .  example a = tuple(my_list)
+
+  7) Sets:
+        created using {} or the set() constructor.  Cannot contain duplicate elements and it is unordered and it is mutable.
+        cannot access through index.  set.add(item), set.remove(), union, intersection, difference, isSubset, isDisjoint
+        Example:
+        mydata = {4,5}
+        mydata1 = set() // you can pass a tuple, or list or another set into the constructor argument.
+        mydata1.add(6)
+        print(mydata.union(mydata1))
+
+        set is linear time...means constant time...because it will use hashing to store or getting element.
+
+  8) Dictionary:
+      Ordered (3.6 and earlier they (key value pairs) are not ordered - insertion order, but you cannot access elements using index), mutable collection of key-value pairs
+      created using {} or the dict() constructor
+      Keys must be unique and immutable.
+
+      Example: {Nepal:Kathmandu, Italy:Rome, ....}
+          To Access:  dict_1['Nepal']    # you cannot use the index.
+
+      dict_1[key] = value
+      dict_1.pop(key) # to remove
+      # other methods:  keys(), values(), items() -- (returns a list of tuples...and each tuple is a key value pair)
+
+   9) Python Modules (Example modules (kind of java package): math, random, datetime, os etc)
+      Example1:
+        import random
+        print(random.randint(1,100))
+
+      Example2: (Writing your own module):
+
+      #customer.py
+      name = "srinivas"
+      def hello(myname):
+           print("Hello " + myname)
+            return myname
+      ########################
+      # main.py
+      from customer import test, factorial, data #  import a specifics function or variable
+      import customer as cus # This is called alias
+      print(cus.name)
+      print(cus.hello("ravi"))
+
+      #if you import a specific function etc, then you no need to use the class name when calling the function.
+      from customer import hello, name
+      print(hello("ravi"))
+      print(name)
+
+  10) Python Lambda Function  (without having to define name for the function)
+      lambda argument(s) : expression
+      Example: greet = lambda : print('hello world')
+               greet()
+
+      Example2: It is returning the value by default.
+      add = lambda x, y:  x + y
+      print(add(1, 2))
+
+      Example 3: (if else statement)
+      lambda a,b: a + b if a < 3 else a * b # if a less than 3, then return a + b else return a * b
+
+  11) map() function # It's called a high order function - because it's a function that takes another function as an argument.
+      The map() function takes two arugments  # This will map every element of the iterable to the function and return a new iterable.
+       a) function
+       b) iterable - an iterable like sets, lists, tuples etc.
+
+       Example1:
+       elm = [2,3,4,5,6]
+       ds = lambda arr : map(lambda x : x*x, arr) #It creates the map of elements. In the below line, you are again converting it to iterable again..to print.
+       print(list(ds(elm)))
+
+       # instead of n*n you can give it as n**2
+
+  12) filter() function # It's called a high order function - because it's a function that takes another function as an argument.
+       The filter() function takes two arugments  # This will filter every element of the iterable to the function and return a new iterable.
+       a) function
+       b) iterable - an iterable like sets, lists, tuples etc.
+
+       elm = [2,3,4,5,6]
+       ds = lambda arr : filter(lambda x : x>2, arr)
+       print(list(ds(elm)))
+
+  13) Combine both filter and map
+      nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      result = map(lambda x: x * x, filter(lambda x: x % 2 == 0, nums))
+      print(list(result))
+
+  14) scopes of python variables - local and global.
+
+      local scope - any variable which is created inside a function can be accessed within that function or block.
+
+      Call by Value vs Call by Reference
+      -- Call by Value: a copy of the value is passed to a function (used for immutable objects)
+      -- Call by reference: a reference to the original object is passed to a function (used for mutable objects)
+
+      -- call by value example:
+         x = 5
+        def square(y):
+            return x * x
+        print(square(5))
+        print(x) # The original global variable is not modified.
+
+
+
+
+
+
 
 
 
