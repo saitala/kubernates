@@ -1,0 +1,101 @@
+1) For practicing shell scripting on windows, install WSL  by running "WSL --install" in powershell
+    Run this command: 'wsl.exe -d Ubuntu' to start
+2) Different Shell Types:
+    Bash (developed on top of Sh),  Sh (Shell - Original and have basic features), Csh  (C Shell - Bash, but different syntax and features), Tcsh (Enhanced version of Csh)
+
+3) Check which shell im in:
+   which $SHELL     -> Ouptut: /bin/bash.   # /bin will have all the binaries.  You can also give echo $SHELL
+   To check with types of shells your system is supporting,  go to cd /bin and see all the binaries
+
+4) To change the type of shell, you can use the command:
+   chsh -s /bin/ssh  #Note that, after this if you type which $SHELL, then it will still show bash. In order
+                      to get this into affect, you have to open a new terminal and type, which $SHELL
+
+5) Writing first scell script
+    -- Create a new file with .sh extension (This is also not mandatory, but just to differentiate between different type of files on your system)
+    -- Add a shebang line at the beginning of the file, specifying the shell interpreter to be used (e.g #!/bin/bash) -- This starts with #! followed by the shell
+        Note: If you are executing by using the interpreter name (Example bash firstshell.sh), then no need to give the shebang or make the file as executable.
+              The same applies to python code or other code, when you want to run it, without giving the interpreter separately.
+    -- Write the shell commands you want to execute in the file.
+    -- Make the file executable using chmod + x command  (to remove a permssion  use - instead of +)
+    -- Run the script using  ./<filename>.sh command
+
+    ls -l (means long command)  <file_name> will give the permission of the file, and who has created etc.
+
+    -rwxrwxrwx 1 ssaitala(Owner) ssaitala(group) 35 Aug 30 14:36 firstshell.sh
+
+    -rwxrwxrwx (It's a 10 character.  1st character is if it is a file/directory/or something)
+                Next 3 characters (rwx) -> It's read, write and execute (They are for the owner)
+                Next 3 chatacers are for group permission. All the users in the group.
+                Next 3 characters are for everyone else.
+
+6) Variables and Data Types ( the data type is determined at run time..but not at the compile time)
+   Example1:
+     name="arun" (In shell you cannot have spaces, before and after =)
+     echo "Hello $name"
+
+     Shell Script supports 3 basic data types:
+       - strings (enclosed by single or double quotes - this issue with single quotes, is that it does not do variable substitution (ex: $data))
+       - integers (whole numbers without a decimal point)
+       - booleans (can have 2 value true or false)
+
+7) Command line arugments:
+    They can be acessed inside the script using special variables,   the first argument is $1 and the second
+    arugment is $2 and so on.  $@ - all args,  $# - arg count
+
+8) Arithemetic operations:
+   8.1)  In bash you need to give as $((expression))
+        Example $((a+b))
+
+9) Relations operators:
+    They are used to compare values in shell scripts.
+    The basic relational operators:
+    -eq (equal)
+    -ne (not equal)
+    -gt (greater than)
+    -lt (less than)
+    -ge (greater than or equal to )
+    -lt (less than or equal to )
+
+    Example: if [[ $num1 -eq $num2 ]]; then
+                #statments
+             fi
+
+    **Break down of conditional expressions**
+    1) Single brackets [...]  --> This is posix-compatible (traditional). It stands for Portable Operating System Interface
+       - It's a standard defined by IEEE to ensure compatibility between  unix-like operating systems ( linux, MacoOS, BSD,etc)
+         The script uses only features that are defined by the POSIX standard, so it can run on any POSIX-compliant shell
+         - not just bash. Not all systems have Bash installed - or they might use a different shell as the default (ex:
+         sh, dash, ksh etc)
+         if ["$num1" -eq "$num2"]; then
+            echo "EQual"
+         fi
+    2) Double Brackets [[ .....]]  This is a bash extension-more powerful
+       if [[ $num1 -eq $num2]]; then
+            echo "Equal"
+       fi   #Quoting is often optional here (but still go practice)
+
+    3) Double parentheses ((...))
+       This is for arithmetic evaluation, not string/conditional tests
+       if (( num1 == num2 )); then
+            echo "Equal"
+       fi  # you don't need -eq, -lt, etc. - just use standard ==, <, > etc
+           # No need to use $ before variables inside (( ))
+
+
+    Note: For all of them, follow a standard condition     if [[ <condition> ]];then
+                                                                <statements>
+                                                           else
+                                                                <statements>
+                                                           fi
+
+
+    Note: You can use "elif" if you are using multiple conditions.
+
+    Note: If you want to use then , in the next line , then you can remove the ;
+          if [[<condition>>]]
+          then...
+          elif [[condition]]; then
+           ....
+
+
