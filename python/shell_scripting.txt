@@ -98,4 +98,231 @@
           elif [[condition]]; then
            ....
 
+10) Case statement Example: (can be only used for equality checks)
+
+    Example1:
+
+        #!/bin/bash
+        gender=$1
+        case $gender in
+            'M')
+                legal_age=21
+                ;;
+            'F')
+                legal_age=18
+                ;;
+            'O'))
+                legal_age=20
+                ;;
+        esac
+
+        echo $legal_age
+
+
+        Example2:
+
+        #!/bin/bash
+        gender=$1
+        case $gender in
+            'M' | 'K')
+                legal_age=21
+                ;;
+            'F')
+                legal_age=18
+                ;;
+            'O'))
+                legal_age=20
+                ;;
+            echo "Invalid"
+        esac
+
+  11) For loop
+      There are 2 kinds of for loops.
+      1) Traditional style:
+         for (( i = 0; i < 10; i++ )); do  # Note: If do is on the next line, then there is no need of ;  When you put do on a new line, the newline acts as a statement terminator
+            echo $i
+         done
+
+         Note: The (( .. )) is used for arithemetic operations
+
+      2) List-Style for loop
+         for item in apple banana cherry; do
+            echo $item
+         done
+
+  12) While loop
+
+       Example:
+       i=0
+       while [[ $i -gt 5 ]]
+       do
+         i = ((i + 1))
+         echo $i
+       done
+
+  13) Break and Continue (used in for and while statement)
+
+      Example:
+       i=0
+       while [[ $i -gt 5 ]]
+       do
+         i = ((i + 1))
+         if [[ $i -eq 3]]; then
+            break;
+         fi
+         echo $i
+       done
+
+  14) Functions
+
+       There are 2 different syntaxes for functions.
+
+       a) function <function_name> {
+          myparam = $1
+       --------
+       }
+
+       b) print_hello() {
+         myparam = $1
+        -----
+        return $myparam # If you want to return anything, you can use the return keyword
+       }
+
+  15) Local and Global Variables:
+
+      By default, any variable declared is global.  Eventhough it is inside function or outside function.
+      In function, by default any variable declared is local variable.  if you want to define a variable as local, then include the local keyword side of the variable inside the function.
+      This is the case, when you don't want to override or refer the global variable with the same name as that of the local variable.
+      Example:
+
+      #!/bin/bash
+      count=0
+      increment_count() {
+        local count = 1 # so with the same name count, there is a global variable. We want to make sure, this count, in the function is a different local variable, but not the same global variable.
+      }
+
+      Example2:
+      #!/bin/bash
+      count=0
+      function findMe {
+        local count=$((count + 1))
+        echo $count
+      }
+      findMe  # Notice the function call is without the parenthesis when we  do it in shell
+      echo $count
+
+  16) Regex
+      .(dot): Matches any single character
+      [] (brackets): matches any character within the brackets
+      [^] (caret): matches any character not within the brackets
+      \(backslash): escapes special characters
+      ^(caret): Matches the beginning of the line. Means starts with some character
+      $(dollar sign): matches the end of the line. End with some character
+
+      Advanced Regular Expression:
+      * : matches zero or more occurrences of the previous character.
+      + : matches one or more occurrences of the previous character.
+      ? : matches zero or one occurrence of the previous character
+      () : creates a group of characters
+      | : matches either the expression before of after the pipe.
+
+      Example:
+      #!/bin/bash
+      string="The quick brown"
+      if [[ $string =~ quic. ]]; then
+        echo "match found: $BASH_REMATCH"
+      else
+        echo "No match found"
+      fi
+
+      Note**: To match a regular expression, we use =~
+            The $BASH_REMATCH (BASH_RegularExpressionMatch) is special keyword
+            that will print the match
+
+
+  17)  grep:
+       grep 'colo?r' file.txt # matches color, colour etc.
+       grep '(c|b|r)at' file.txt # matches any line containing "cat" or "bat" or "rat"
+
+  18) Input and Output
+      In order to read the input from the user, we use the command "read"
+      example:
+      read xyz   #  I will give the input as "srinivas"
+      echo $xyz  # It will print srinivas
+
+  19) Redirection:
+      Redirection allows you to redirect standard input/output to a file or device.
+      - Redirect standard input from a file:
+        command <filename.txt
+      - Redirect standard output to a file
+        echo "Hello" >filename.txt
+      - Redirect standard error to a file
+        command 2>filename.txt  # redirects the error along with the output to filename.txt
+      - |
+        Send the output of command1 to the input of command2
+        Example: cat shellscript.sh | grep echo | grep BASH
+
+        Remember:
+         0 -> standard input
+         1 -> standard output
+         2 -> standard error
+
+  20)  Debugging:
+
+      - In shell script, if you give a variable and there is not value defined, then nothing is printed in place of that variable,
+        whereas other languages will give the error as variable is not defined. So, in shell script, it is important to keep proper
+        echo statement, to debug.
+
+      - use the -x option with the shebang line (#!/bin/bash -x) to enable debug mode, which will display the commands being executed.
+
+      - use the set -e command to exit the script immediately if a command fails.
+        Note:
+        In shell script, if one of the command fails in the fail, it will throw and error and also executes the next commands until the end of the file.
+        But if you use -e command, then it will stop at the place where the command is having issue and does not execute further.
+
+  21) Error Handling:
+      codes are from 0 to 255.  0 means success and all others means failure.
+
+      $? you will see what error code you got while executing a command.
+      Example:  Execute a command as lp -l (instead of ls) .   Now try echo $?
+
+  21) Advanced String Manipulation:
+
+      - Regular expression matching:
+        grep '(c|b|r)at' file.txt
+      - Pattern substitution using the sed command:
+        sed 's/cat/dog/g' file.txt  --> Finds cat and replaces with dog
+      - String slicing using the cut command:
+         Suppose you have a file, and the third column (seperated out by , is the ssn ) and you want to get it,
+         cut -d <delimiter> -f <field_number> file.txt
+         cut -d "," -f 1 access.log    Note: -f is the field number, in our above explanation it is the third column.
+
+  22) Arrays:
+       arr=(1 2 3 4 5)
+       To access the array:
+       ${arr[@]}
+
+       Example:
+       for i in ${arr[@]}
+       do
+        echo $i
+       done
+
+  23) Advanced control structure:
+      This is like, you are giving the user, the enum kind of option, where the user can select from the predefined set of values.
+
+      select option in "+" "_" "*" "/" "Quit"
+      do
+        case $option in
+          ....normal case format
+        esac
+      done
+
+
+
+
+
+
+
+
 
