@@ -188,6 +188,64 @@ for row in matrix:  # we can say matrix is a list of lists
         print(square(5))
         print(x) # The original global variable is not modified.
 
+15) OOPs in Python
+
+    Example1:
+
+    class Dog:
+     def bark(self ):   #self is not considered as an attributee. It is something like a this object of class.
+        pingpong = "ravi"  # This only creates the local variable and not attached to the object. So, when you access object.pingpong from outside, it will give as pingpong property not defined in this object.
+        print("Dog bark")
+        self.name = "srinivas"
+
+     myDog = Dog()
+     myDog.bark()
+     print(self.name) # This dosen't wok because self is only valid inside class methods, where it refers the current object.
+     print(myDog.name) # This will work.
+
+
+15.1) Python constructor and destructor and representation # The name init cannot be changed and it is an inbuilt name for constructor that should be used.
+      Example 1:
+      class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+     def __del__(self):   # This is a default destructor that is implicit and you can override in any class.
+                          # Note: This is called when the garbage collector decides to delete an object. So, it is not garunteed that it is always called when we expect it.
+        print("deleting this object")
+
+     def __repr__(self):  # when you print an object you get the non-readable format. In order to print in a readable format, you can use this. This is shimilar to overriding of toString in java
+        return "name: "+self.name
+
+    myDog = Dog("ravi", "srinu")
+    print(myDog.name)
+    print(myDog.age)
+
+15.2)  Define a function that takes an object as an attribute.
+     class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    myDog = Dog("ravi", "srinu")
+
+    def my_function(dog : Dog):
+        print(dog.age)
+
+    my_function(myDog)
+
+
+15.3) It is a good practice to define a variable and declared it's value as None.  This will be a good code, when someone sees that we are initializing to None.
+
+15.4) hasattr(objectName, attribute)   # this inbuilt method will check if an object has specific attribute. It's a boolean.
+      setattr(objectName, attribute)
+      delattr(objectName, attribute)
+
+
+
+
+
 
 
 
