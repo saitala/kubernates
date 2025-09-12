@@ -303,6 +303,40 @@ ff = FlyingFish(1, 2, 3,4,5,6, 0)
 print(ff.x, ff.y, ff.z, ff.a, ff.b, ff.c, ff.k)
 print(ff.move())
 
+17) oops - Encapsulation
+
+   Example1:
+
+   class Car:
+    wheels = 4 # public attribute
+    _color = "red" #protected attribute
+    __engine = "V8"  #private attribute
+
+    Example2:
+
+    class A:
+     def __init__(self):
+         self.__a1 = None
+         self._a = None
+
+     def myfunc(self):
+        self._a = 1
+        self.__a1 = 2
+
+    class B(A):
+        def mydetails(self):
+            print(self.__a1) # This one will be an error as private variables cannot be access outside of the class
+            print(self._a) # This can be access as it is protected, if this class extends the other class.
+
+18) oops - Polymorphism
+
+    The ability of different   classes to share the same interface and be treated as objects of a common superclass.
+    In python, there is no concept of interface, so, there will the super class and if  a child class extends  this class,
+    then it has to override the parent class method.
+
+
+
+
 
 
 
