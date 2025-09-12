@@ -242,6 +242,67 @@ for row in matrix:  # we can say matrix is a list of lists
       setattr(objectName, attribute)
       delattr(objectName, attribute)
 
+16) Oops - Inheritance:
+    Example1:
+    class Animal:
+        def function_animall(self):
+            print("Animal")
+
+    class Dog(Animal): # This is how we wil inherit the animal
+        def function_dog(self): # if we give function_animall here, then the output will be animal
+            print("Dog")
+
+    animal = Dog()
+    animal.function_animall() # will print animal
+
+
+    Example2:
+
+    class Bird:
+        def fly(self):
+          print("I can fly")
+
+    class Fish:
+        def swim(self):
+            print("I can swimm")
+
+    class FlyingFish(Bird, Fish): #Multiple inheritance is possible
+        pass  # pass is just used so that the class definition is syntactically valid (Python doesn’t allow an empty class or function body).
+
+
+    ff = FlyingFish()
+    ff.fly()
+    ff.swim()
+
+    Example 3:
+
+    class Bird:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def move(self):
+       print("Move Bird",self.x,self.y,self.z)
+
+class Fish:
+   def __init__(self, a, b, c):
+       self.a = a
+       self.b = b
+       self.c = c
+
+class FlyingFish(Bird, Fish):
+    def __init__(self, x,y,z, a, b, c, k):
+        Fish.__init__(self, a, b, c)
+        Bird.__init__(self, x, y, z)
+        self.k = k
+
+
+
+ff = FlyingFish(1, 2, 3,4,5,6, 0)
+print(ff.x, ff.y, ff.z, ff.a, ff.b, ff.c, ff.k)
+print(ff.move())
+
 
 
 
