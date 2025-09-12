@@ -334,6 +334,23 @@ print(ff.move())
     In python, there is no concept of interface, so, there will the super class and if  a child class extends  this class,
     then it has to override the parent class method.
 
+19) Customer Sort Functions in Python:
+     - sorted(): Returns a new sorted list from the specified iterable
+     - sort(): Modifies the list in-place and returns None
+     - key: Function to be called on each list element to determine the sorting order
+     - reverse: if set to True, the list is sorted in descending order.
+
+     Example:
+     mylist = ['ab', 'de', 'cf']
+     secondlist = sorted(mylist)
+     print(secondlist)
+     mylist.sort(reverse=True)
+     print(mylist)
+     thirdlist = sorted(secondlist, key=lambda x: x[1], reverse=True) # second character of a string.
+     print(thirdlist)
+
+
+
 
 
 
