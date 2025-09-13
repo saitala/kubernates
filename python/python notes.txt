@@ -346,8 +346,102 @@ print(ff.move())
      print(secondlist)
      mylist.sort(reverse=True)
      print(mylist)
-     thirdlist = sorted(secondlist, key=lambda x: x[1], reverse=True) # second character of a string.
+     thirdlist = sorted(secondlist, key=lambda x: x[1], reverse=True) # second character of a string. you can usr x: (x[1],x[2]) in lambda key
      print(thirdlist)
+
+20) Exception handling
+
+    Format#1:
+
+    try:
+        # code that may cause exception
+    except:
+        # code to run when exception occurs.
+    finally:
+        # some code....always executed
+
+    Format#2:
+    try:
+     # code that may cause exception
+    except <TypeofErrorClass>:
+      # code to run when exception occurs.
+    else:
+      # code to run when exception does not occur.
+    finally:
+      # The finally code block here
+
+
+    Example 1:
+
+    try:
+    a = 5
+    b = 0
+    c = a/b
+    except:
+        print("getting syntax error")
+    finally:
+        print("finally")
+
+
+
+
+21) File Handling:
+
+    Different modes to open a file in python.
+    r -> open a file for reading (default)
+    w -> open a file for writing. Creates a new file if it does not exist or truncates the file if it  exists
+    x -> Open a file for exclusive creation. If the file already exists, the operation fails.
+    a -> open a file for appending at the end of the file without truncating it. Creates a new file if it does not exist.
+
+    Example1:
+
+    file = open("example.txt", "w")
+    file.write("Hello World")
+    file.close()
+
+    Example2:
+
+    with open("test1.txt", "r") as file
+        cur_line = file.readline()
+        print(cur_lne)
+
+22) JSON (built-in python module) Module Functions:
+
+    json.dump(): serialize python object to a json-formatted file
+    json.dumps(): serialize python object to a json-formatted string
+    json.load(): Deserialize JSON data from a file into a python object
+    json.loads(): Deserialize JSON data from a string into a python object.
+
+    JSON supports primitive types (strings, numbers, boolean) as well as nested array and objects. Simple python objects
+    are translated to JSON according to the following conversion.
+
+    python --> json
+
+    dict --> object
+    list, tuple --> array
+    str --> string
+    int, long, float --> number
+    True --> true
+    False --> false
+    None --> null
+
+    Example1:
+    import json
+    # Writing a new dictionary
+    person = {
+        "name":"John",
+        "age": 30,
+        "city":"New York",
+        "hasChildren":False,
+        "titles": ["engineer", "programmer"],
+    }
+    data = json.dumps(person)
+    print(type(data))
+    print(data)
+
+
+
+
 
 
 
